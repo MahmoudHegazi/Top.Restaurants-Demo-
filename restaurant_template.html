@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Top Restaurants</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+
+/*nav and body query*/
+@media screen and (min-width: 1000px) {
+li.nav_li, li.login {
+   float: left;
+   
+}
+#restaurants {
+  text-align:center;
+  background-image:url('https://f-scope.net/images/background-white-png-8.jpg');
+  background-size: cover;
+  width: 800px;
+  color: white;
+  padding: 12px;
+  margin-left: 30%;
+}
+
+body {
+  background-color: #d8d8d8;
+}
+
+.item {
+ background-image:url('https://wallpaperplay.com/walls/full/a/9/8/145593.jpg');
+ margin-top: 10px;
+ 
+}
+}
+/* */
+
+/* Navigation Bar */
+body {
+background-color: #d8d8d8;
+margin: auto;
+}
+ul#nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+}
+
+li.nav_li, li.login {
+   
+}
+
+li a.nav_link {
+  display: block;
+  color: black; 
+  padding: 14px 16px;
+  text-decoration: none;
+  text-align: center;
+}
+
+li a.nav_link:hover {
+  background-color: #111;
+  color: white;
+}
+
+li a.active {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: gold;
+}
+
+li a.right {
+
+ float: right;
+}
+
+
+
+/* Header */
+
+#header {
+  height: 600px;
+  background-image:url('https://www.pelicanbeach.com/~/media/large/ocean2000%20jpg.ashx');
+  backgroud-size: cover;
+  text-align: center;
+  
+  
+}
+
+
+
+#restaurants {
+  text-align:center;
+  background-image:url('https://wallpaperplay.com/walls/full/a/9/8/145593.jpg');
+  background-size: cover;
+  width: 800px;
+  color: white;
+  padding: 12px;
+}
+
+
+
+.edit {
+  float: left;
+  margin-left: 5%;
+}
+
+.delete {
+  float: right;
+  margin-right: 5%;
+}
+
+.item {
+  border: 2px solid white;
+  background-image:url('https://f-scope.net/images/background-white-png-8.jpg');
+  height: 180px;
+  width: 780px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+.item a {
+  text-decoration:none;
+}
+
+.rest_name {
+  font-weight: bold;
+  font-family:Georgia;
+  font-size: 22px;
+  border: 4px solid black;
+  border-radius: 7%;
+  width: 300px;
+  margin-left: 32%;
+  padding: 10px;
+  background-image: url('https://wallpaperplay.com/walls/full/a/9/8/145593.jpg');
+  background-size: cover;
+  display: block;
+  color: white;
+  
+}
+
+
+p.rest_name:hover {
+ 
+  background-color: rgb(207 171 46);
+  color: white;
+  border: 4px solid rgb(230 230 230);
+   border-radius: 14%;
+  cursor: pointer;
+ 
+}
+/* */
+</style>
+</head>
+<body>
+
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+{% for message in messages %}
+
+    <!-- <script>alert('{{message }}')</script> -->
+  {% endfor %}
+{% endif %}
+{% endwith %}
+
+
+<div id='header'>
+
+
+
+
+</div>
+
+
+
+<ul id='nav'>
+  <li class='nav_li'><a class="active" href="#home">Restaurants</a></li>
+  <li class='nav_li'><a class='nav_link' href="#news">Menus</a></li>
+  <li class='nav_li'><a class='nav_link' href="#contact">Login</a></li>
+  <li class='nav_li'><a class='nav_link' href="{{url_for('newRestaurant')}}">Add Restaurant</a></li>
+</ul>
+<br><br>
+
+
+
+<div id='restaurants'>
+
+
+
+
+   {% for i in restaurants %} 
+
+
+   <div class='item'>
+
+  <p class='rest_name'>  <a href="{{url_for('showMenu',restaurant_id = i.id )}}">Pizza Palce</a>  </p> 
+
+    <a  class='w3-btn w3-green edit' href="{{url_for('editeRestaurant', restaurant_id = i.id)}}">Edite</a>
+    <a class='w3-btn w3-red delete' href="{{url_for('deleteRestaurant', restaurant_id = i.id)}}">Delete</a>
+    </div>
+<br><br>
+
+
+
+
+
+
+  <!--  {% for i in restaurants %} -->
+
+
+   <div class='item'>
+    <a href="{{url_for('showMenu',restaurant_id = i.id )}}">{{i.name}}</a>   
+<br><br>
+    <a class='w3-btn w3-green edit' href="{{url_for('editeRestaurant', restaurant_id = i.id)}}">Edite</a>
+    <a class='w3-btn w3-red delete' href="{{url_for('deleteRestaurant', restaurant_id = i.id)}}">Delete</a>
+    </div>
+<br><br>
+   
+
+
+
+  <!--  {% for i in restaurants %} -->
+
+
+   <div class='item'>
+    <a href="{{url_for('showMenu',restaurant_id = i.id )}}">{{i.name}}</a>   
+<br><br>
+    <a class='w3-btn w3-green edit' href="{{url_for('editeRestaurant', restaurant_id = i.id)}}">Edite</a>
+    <a class='w3-btn w3-red delete' href="{{url_for('deleteRestaurant', restaurant_id = i.id)}}">Delete</a>
+    </div>
+<br><br>
+
+
+
+  <!--  {% for i in restaurants %} -->
+
+
+   <div class='item'>
+    <a href="{{url_for('showMenu',restaurant_id = i.id )}}">{{i.name}}</a>   
+<br><br>
+    <a class='w3-btn w3-green edit' href="{{url_for('editeRestaurant', restaurant_id = i.id)}}">Edite</a>
+    <a class='w3-btn w3-red delete' href="{{url_for('deleteRestaurant', restaurant_id = i.id)}}">Delete</a>
+    </div>
+<br><br>
+
+
+
+
+  <!--  {% for i in restaurants %} -->
+
+
+   <div class='item'>
+    <a href="{{url_for('showMenu',restaurant_id = i.id )}}">{{i.name}}</a>   
+<br><br>
+    <a class='w3-btn w3-green edit' href="{{url_for('editeRestaurant', restaurant_id = i.id)}}">Edite</a>
+    <a class='w3-btn w3-red delete' href="{{url_for('deleteRestaurant', restaurant_id = i.id)}}">Delete</a>
+    </div>
+<br><br>
+
+
+
+
+
+  <!--  {% for i in restaurants %} -->
+
+
+   <div class='item'>
+    <a href="{{url_for('showMenu',restaurant_id = i.id )}}">{{i.name}}</a>   
+<br><br>
+    <a class='w3-btn w3-green edit' href="{{url_for('editeRestaurant', restaurant_id = i.id)}}">Edite</a>
+    <a class='w3-btn w3-red delete' href="{{url_for('deleteRestaurant', restaurant_id = i.id)}}">Delete</a>
+    </div>
+<br><br>
+
+
+
+
+  <!--  {% for i in restaurants %} -->
+
+
+   <div id='item'>
+    <a href="{{url_for('showMenu',restaurant_id = i.id )}}">{{i.name}}</a>   
+<br><br>
+    <a class='w3-btn w3-green edit' href="{{url_for('editeRestaurant', restaurant_id = i.id)}}">Edite</a>
+    <a class='w3-btn w3-red delete' href="{{url_for('deleteRestaurant', restaurant_id = i.id)}}">Delete</a>
+    </div>
+<br><br>
+
+
+
+
+  <!--  {% for i in restaurants %} -->
+
+
+   <div class='item'>
+    <a href="{{url_for('showMenu',restaurant_id = i.id )}}">{{i.name}}</a>   
+<br><br>
+    <a class='w3-btn w3-green edit' href="{{url_for('editeRestaurant', restaurant_id = i.id)}}">Edite</a>
+    <a class='w3-btn w3-red delete' href="{{url_for('deleteRestaurant', restaurant_id = i.id)}}">Delete</a>
+    </div>
+<br><br>
+
+
+
+
+  <!--  {% for i in restaurants %} -->
+
+
+   <div class='item'>
+    <a href="{{url_for('showMenu',restaurant_id = i.id )}}">{{i.name}}</a>   
+<br><br>
+    <a  class='w3-btn w3-green edit' href="{{url_for('editeRestaurant', restaurant_id = i.id)}}">Edite</a>
+    <a class='w3-btn w3-red delete' href="{{url_for('deleteRestaurant', restaurant_id = i.id)}}">Delete</a>
+    </div>
+<br><br>
+
+
+
+
+  <!--  {% for i in restaurants %} -->
+
+
+   <div class='item'>
+    <a href="{{url_for('showMenu',restaurant_id = i.id )}}">{{i.name}}</a>   
+<br><br>
+    <a class='w3-btn w3-green edit' href="{{url_for('editeRestaurant', restaurant_id = i.id)}}">Edite</a>
+    <a class='w3-btn w3-red delete' href="{{url_for('deleteRestaurant', restaurant_id = i.id)}}">Delete</a>
+<br><br>
+</div>
+
+
+  <!--  {% for i in restaurants %} -->
+
+
+   <div class='item'>
+    <a href="{{url_for('showMenu',restaurant_id = i.id )}}">{{i.name}}</a>   
+<br><br>
+    <a class='w3-btn w3-green edit' href="{{url_for('editeRestaurant', restaurant_id = i.id)}}">Edite</a>
+    <a class='delete' href="{{url_for('deleteRestaurant', restaurant_id = i.id)}}">Delete</a>
+<br><br>
+   </div>
+
+</div>
+
+    {% endfor %}
+
+
+
+
+</body>
+</html>
